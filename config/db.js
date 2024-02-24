@@ -36,7 +36,7 @@ db.connect((err) => {
         }
     });
 
-    // Create a user table
+    // Create a user table or schema
     db.query(userSchema.createUserTable, (err, result) => {
         if (err) {
         console.log(err);
