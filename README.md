@@ -301,16 +301,37 @@ Start the Server
 | :-------- | :------- | :-------------------------------- |
 | `id`    | `string` | **Required**.  |
 
-#### create order
+#### update product quantity
 
 ```http
-  POST /api/order/:user-id/:product-id
+  PUT /api/order/:user-id/:product-id/:quantity
 ```
 
 | Params | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `user id`    | `string` | **Required**.  |
 | `product id`    | `string` | **Required**.  |
+| `quantity`    | `string` | **Required**.  |
+
+#### Delete order
+
+```http
+  DELETE /api/order/delete/:id
+```
+
+| Params | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`    | `string` | **Required**.  |
+
+#### get order by user id
+
+```http
+  GET /api/order/get-order/:user-id
+```
+
+| Params | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `user id`    | `string` | **Required**.  |
 ## 🚀 About Me
 
 Full Stack Web developer professional with experience developing and designing web applications using Html, CSS, javascript, node.Js, Expressjs, MongoDB, React, GitHub, and UI/UX. Abel to create eye catchy designs and easily adept at developing complex backend systems, web services, databases, Docker.
