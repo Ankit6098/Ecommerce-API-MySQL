@@ -18,7 +18,7 @@ module.exports.getAllOrders = (req, res) => {
 
 // create order
 module.exports.createOrder = (req, res) => {
-    const { user_id, product_id, quantity } = req.body;
+    const { user_id, product_id, quantity } = req.params;
     queries.createOrder(user_id, product_id, quantity, (err, result) => {
         if (err) {
             res.status(400).json({ error: err });

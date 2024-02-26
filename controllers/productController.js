@@ -54,7 +54,7 @@ module.exports.getProductById = (req, res) => {
 
 // update product
 module.exports.updateProduct = (req, res) => {
-    const { name, description, id } = req.body;
+    const { name, description, id } = req.params;
     query.updateProduct(name, description, id, (err, result) => {
         if (err) {
             res.status(400).json({ error: err });
@@ -78,7 +78,7 @@ module.exports.deleteProduct = (req, res) => {
 
 // update product price
 module.exports.updateProductPrice = (req, res) => {
-    const { price, id } = req.body;
+    const { price, id } = req.params;
     query.updateProductPrice(price, id, (err, result) => {
         if (err) {
             res.status(400).json({ error: err });

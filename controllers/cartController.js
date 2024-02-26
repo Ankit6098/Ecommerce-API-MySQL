@@ -23,7 +23,7 @@ module.exports.createCart = (req, res) => {
     if (!isAuth) {
         res.status(401).json({ message: 'You are not authenticated' });
     } else {
-        const { product_id, user_id, quantity } = req.body;
+        const { product_id, user_id, quantity } = req.params;
         queries.createCart(product_id, user_id, quantity, (err, result) => {
             if (err) {
                 res.status(400).json({ error: err });
@@ -51,7 +51,7 @@ module.exports.updateCart = (req, res) => {
     if (!isAuth) {
         res.status(401).json({ message: 'You are not authenticated' });
     } else {
-        const { product_id, user_id, quantity } = req.body;
+        const { product_id, user_id, quantity } = req.params;
         queries.updateCart(product_id, user_id, quantity, (err, result) => {
             if (err) {
                 res.status(400).json({ error: err });
