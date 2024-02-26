@@ -24,13 +24,7 @@ module.exports.createUser = (req, res) => {
     if (err) {
       res.status(400).json({ error: err });
     } else {
-      res.status(201).json({
-        message: "User created successfully",
-        name,
-        username,
-        email,
-        password,
-      });
+      res.status(201).json({ message: "User created successfully", result })
     }
   });
 };
@@ -66,15 +60,15 @@ module.exports.login = (req, res) => {
     if (err) {
       res.status(400).json({ error: err });
     } else {
-        if (result.length === 0) {
-            res.status(404).json({ message: "User not found" });
-        } else {
-            const user = result[0];
-            const token = jwt.sign({ user }, process.env.JWT_SECRET, {
-            expiresIn: "7d",
-            });
-            res.status(200).json({ token });
-        }
+      if (result.length === 0) {
+          res.status(404).json({ message: "User not found" });
+      } else {
+        const user = result[0];
+        const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+        expiresIn: "7d",
+        });
+        res.status(200).json({ token });
+      }
     }
   });
 };

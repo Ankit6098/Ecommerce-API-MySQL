@@ -1,4 +1,5 @@
 const db = require("../config/db");
+const bycrypt = require("bcrypt");
 
 // get all users
 function getAllUsers(callback) {
@@ -13,6 +14,9 @@ function getAllUsers(callback) {
 
 // create user
 function createUser(name, username, email, password, callback) {
+  const salt = bycrypt.genSaltSync(10);
+  const hash = bycrypt.hashSync(password, salt);
+  password = hash;
   db.query(
     `INSERT INTO users (name, username, email, password) VALUES (?, ?, ?, ?)`,
     [name, username, email, password],
@@ -90,43 +94,67 @@ function getUserByUsername(username, callback) {
 }
 
 // login user
+// function login(email, password, callback) {
+//   db.query(
+//     `SELECT * FROM users WHERE email = ? AND password = ?`,
+//     [email, password],
+//     (err, result) => {
+//       if (err) {
+//         // check if email not exists
+//         db.query(
+//           `SELECT * FROM users WHERE email = ?`,
+//           [email],
+//           (err, result) => {
+//             if (err) {
+//               callback(err, null);
+//             } else {
+//               if (result.length === 0) {
+//                 callback("Email not found", null);
+//               } else {
+//                 // check if password is incorrect
+//                 db.query(
+//                   `SELECT * FROM users WHERE email = ? AND password != ?`,
+//                   [email, password],
+//                   (err, result) => {
+//                     if (err) {
+//                       callback(err, null);
+//                     } else {
+//                       if (result.length > 0) {
+//                         callback("Password is incorrect", null);
+//                       }
+//                     }
+//                   }
+//                 );
+//               }
+//             }
+//           }
+//         )
+//       } else {
+//         callback(null, result);
+//       }
+//     }
+//   );
+// }
+
+// login user using bcrypt
 function login(email, password, callback) {
   db.query(
-    `SELECT * FROM users WHERE email = ? AND password = ?`,
-    [email, password],
+    `SELECT * FROM users WHERE email = ?`,
+    [email],
     (err, result) => {
       if (err) {
-        // check if email not exists
-        db.query(
-          `SELECT * FROM users WHERE email = ?`,
-          [email],
-          (err, result) => {
-            if (err) {
-              callback(err, null);
-            } else {
-              if (result.length === 0) {
-                callback("Email not found", null);
-              } else {
-                // check if password is incorrect
-                db.query(
-                  `SELECT * FROM users WHERE email = ? AND password != ?`,
-                  [email, password],
-                  (err, result) => {
-                    if (err) {
-                      callback(err, null);
-                    } else {
-                      if (result.length > 0) {
-                        callback("Password is incorrect", null);
-                      }
-                    }
-                  }
-                );
-              }
-            }
-          }
-        )
+        callback(err, null);
       } else {
-        callback(null, result);
+        if (result.length === 0) {
+          callback("Email not found", null);
+        } else {
+          const hash = result[0].password;
+          if (bycrypt.compareSync(password, hash)) {
+            callback(null, result);
+          } else {
+            callback("Password is incorrect", null);
+          }
+        }
       }
     }
   );
