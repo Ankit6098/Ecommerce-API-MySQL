@@ -24,22 +24,6 @@ Start the Server
 ```bash
   npm start
 ```
-## 🚀 About Me
-
-Full Stack Web developer professional with experience developing and designing web applications using Html, CSS, javascript, node.Js, Expressjs, MongoDB, React, GitHub, and UI/UX. Abel to create eye catchy designs and easily adept at developing complex backend systems, web services, databases, Docker.
-
-
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ankithub.vercel.app/)
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColorwhite=)](https://www.linkedin.com/in/ankit-vishwakarma-6531221b0/)
-
-
-## Feedback
-
-If you have any feedback, please reach out to us at ankitvis609@gmail.com
-
-
 ## API Reference
 
 
@@ -327,3 +311,18 @@ If you have any feedback, please reach out to us at ankitvis609@gmail.com
 | :-------- | :------- | :-------------------------------- |
 | `user id`    | `string` | **Required**.  |
 | `product id`    | `string` | **Required**.  |
+## 🚀 About Me
+
+Full Stack Web developer professional with experience developing and designing web applications using Html, CSS, javascript, node.Js, Expressjs, MongoDB, React, GitHub, and UI/UX. Abel to create eye catchy designs and easily adept at developing complex backend systems, web services, databases, Docker.
+
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ankithub.vercel.app/)
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColorwhite=)](https://www.linkedin.com/in/ankit-vishwakarma-6531221b0/)
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at ankitvis609@gmail.com
+
